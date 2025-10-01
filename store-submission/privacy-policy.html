@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>网页隐形尺 隐私政策</title>
+  <style>
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;max-width:860px;margin:40px auto;padding:0 20px;line-height:1.7;color:#1f2937}
+    h1{font-size:28px;margin:0 0 16px}
+    h2{margin:28px 0 10px;font-size:20px}
+    code,pre{background:#f3f4f6;border-radius:6px;padding:2px 6px}
+    .muted{color:#6b7280}
+  </style>
+  <meta name="description" content="网页隐形尺扩展隐私政策：不收集个人数据，所有计算在本地完成。" />
+</head>
+<body>
+  <h1>网页隐形尺 隐私政策</h1>
+  <p class="muted">最后更新：2025-10-01</p>
+
+  <h2>我们收集哪些数据？</h2>
+  <p>本扩展<strong>不收集任何个人数据</strong>。扩展不会记录浏览历史、页面内容、账号信息，也不会将数据发送到任何外部服务器。</p>
+
+  <h2>数据的使用与处理</h2>
+  <ul>
+    <li>扩展仅在用户交互后对当前活动页面绘制测量覆盖层并读取元素尺寸。</li>
+    <li>所有计算（尺寸、距离等）均在浏览器本地完成。</li>
+    <li>用户偏好（如单位、样式）通过 <code>chrome.storage</code> 在本地存储，用于改善使用体验。</li>
+  </ul>
+
+  <h2>权限说明</h2>
+  <ul>
+    <li><strong>activeTab</strong>：仅在用户触发后访问当前标签页的 DOM，用于测量显示。</li>
+    <li><strong>storage</strong>：仅用于保存本地设置，不含个人可识别信息。</li>
+    <li><strong>content_scripts（匹配 <code>&lt;all_urls&gt;</code>）</strong>：用于绘制视觉覆盖层与交互，不读取或传输页面内容。</li>
+  </ul>
+
+  <h2>数据共享与第三方</h2>
+  <p>我们不与任何第三方共享数据；扩展不包含广告与分析跟踪脚本。</p>
+
+  <h2>安全性</h2>
+  <p>扩展不执行远程代码，不与外部服务器通信，减少潜在的安全风险。我们建议保持浏览器与扩展为最新版本。</p>
+
+  <h2>联系我们</h2>
+  <p>如有问题或建议，请在 GitHub 仓库提交 Issue：
+    <a href="https://github.com/Yangyang178/wangye-yinxingchi" target="_blank">Yangyang178/wangye-yinxingchi</a>
+  </p>
+</body>
+</html>

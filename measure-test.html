@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>距离测量功能测试</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #667eea;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            font-weight: 700;
+        }
+        
+        .test-area {
+            margin: 40px 0;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            border: 2px dashed #667eea;
+        }
+        
+        .instructions {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+        }
+        
+        .instructions h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        
+        .step {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .step-number {
+            background: #667eea;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .test-elements {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin: 30px 0;
+        }
+        
+        .test-box {
+            height: 150px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .test-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+        
+        .box1 { background: linear-gradient(135deg, #667eea, #764ba2); }
+        .box2 { background: linear-gradient(135deg, #f093fb, #f5576c); }
+        .box3 { background: linear-gradient(135deg, #4facfe, #00f2fe); }
+        .box4 { background: linear-gradient(135deg, #43e97b, #38f9d7); }
+        
+        .distance-demo {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 40px 0;
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(67, 233, 123, 0.1), rgba(56, 249, 215, 0.1));
+            border-radius: 15px;
+            border: 2px solid rgba(67, 233, 123, 0.3);
+        }
+        
+        .point {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .point:hover {
+            transform: scale(1.1);
+        }
+        
+        .point-a { background: linear-gradient(135deg, #ff6b6b, #ee5a24); }
+        .point-b { background: linear-gradient(135deg, #4ecdc4, #44a08d); }
+        
+        .status {
+            text-align: center;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+        
+        .status.info {
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+            border: 1px solid rgba(102, 126, 234, 0.3);
+        }
+        
+        .keyboard-hint {
+            display: inline-flex;
+            align-items: center;
+            background: #333;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-family: monospace;
+            font-size: 0.9em;
+            margin: 0 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔧 距离测量功能测试</h1>
+        
+        <div class="instructions">
+            <h3>📋 测试步骤</h3>
+            <div class="step">
+                <div class="step-number">1</div>
+                <div>打开浏览器开发者工具，在Console中输入以下代码来模拟插件环境：</div>
+            </div>
+            <div style="background: #2d3748; color: #e2e8f0; padding: 15px; border-radius: 8px; font-family: monospace; margin: 10px 0;">
+                // 模拟插件状态<br>
+                window.isPluginEnabled = true;<br>
+                window.isMeasureEnabled = true;
+            </div>
+            
+            <div class="step">
+                <div class="step-number">2</div>
+                <div>按住 <span class="keyboard-hint">Ctrl</span> 键并点击页面上的任意位置开始测量</div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">3</div>
+                <div>点击第二个位置完成距离测量</div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">4</div>
+                <div>按 <span class="keyboard-hint">ESC</span> 键退出测量模式</div>
+            </div>
+        </div>
+        
+        <div class="status info">
+            💡 提示：测量功能会在两点之间绘制连线并显示像素距离
+        </div>
+        
+        <div class="test-area">
+            <h3 style="text-align: center; color: #667eea; margin-bottom: 20px;">🎯 测试区域</h3>
+            
+            <div class="test-elements">
+                <div class="test-box box1">测试元素 A</div>
+                <div class="test-box box2">测试元素 B</div>
+                <div class="test-box box3">测试元素 C</div>
+                <div class="test-box box4">测试元素 D</div>
+            </div>
+            
+            <div class="distance-demo">
+                <div class="point point-a">A</div>
+                <div style="flex: 1; text-align: center; color: #666; font-style: italic;">
+                    ← 测量这两个点之间的距离 →
+                </div>
+                <div class="point point-b">B</div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // 模拟插件环境
+        console.log('🔧 距离测量功能测试页面已加载');
+        console.log('💡 请按照页面说明进行测试');
+        
+        // 添加一些测试辅助功能
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'F1') {
+                e.preventDefault();
+                alert('测试提示：\n1. 确保已开启插件和测量功能\n2. 使用 Ctrl+点击 开始测量\n3. 观察测量线和距离显示\n4. 使用 ESC 退出测量模式');
+            }
+        });
+        
+        // 添加点击反馈
+        document.addEventListener('click', function(e) {
+            if (e.ctrlKey || e.metaKey) {
+                console.log('🎯 检测到 Ctrl+点击，坐标:', { x: e.clientX, y: e.clientY });
+            }
+        });
+        
+        console.log('📝 按 F1 键查看测试提示');
+    </script>
+</body>
+</html>

@@ -1,0 +1,340 @@
+/* 信息面板样式 */
+.web-ruler-panel {
+    position: fixed !important;
+    z-index: 2147483647 !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    color: #333 !important;
+    border-radius: 16px !important;
+    padding: 0 !important;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+    backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.8) !important;
+    min-width: 300px !important;
+    max-width: 380px !important;
+    pointer-events: none !important;
+    animation: web-ruler-panel-appear 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+
+@keyframes web-ruler-panel-appear {
+    from {
+        opacity: 0 !important;
+        transform: scale(0.9) translateY(10px) !important;
+    }
+    to {
+        opacity: 1 !important;
+        transform: scale(1) translateY(0) !important;
+    }
+}
+
+.web-ruler-panel-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    padding: 12px 16px !important;
+    border-radius: 16px 16px 0 0 !important;
+    font-weight: 600 !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+.web-ruler-panel-header::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%) !important;
+    pointer-events: none !important;
+}
+
+.web-ruler-tag {
+    color: white !important;
+    font-family: 'SF Mono', 'Monaco', 'Menlo', 'Ubuntu Mono', monospace !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    background: rgba(255, 255, 255, 0.15) !important;
+    padding: 4px 8px !important;
+    border-radius: 8px !important;
+    display: inline-block !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+.web-ruler-panel-content {
+    padding: 16px !important;
+    background: rgba(255, 255, 255, 0.9) !important;
+    border-radius: 0 0 16px 16px !important;
+}
+
+.web-ruler-section {
+    margin-bottom: 14px !important;
+    background: rgba(255, 255, 255, 0.7) !important;
+    border-radius: 12px !important;
+    padding: 14px 16px !important;
+    border: 1px solid rgba(0, 0, 0, 0.05) !important;
+    transition: all 0.2s ease !important;
+}
+
+.web-ruler-section:hover {
+    background: rgba(255, 255, 255, 0.9) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+}
+
+.web-ruler-section:last-child {
+    margin-bottom: 0 !important;
+}
+
+.web-ruler-section-title {
+    color: #667eea !important;
+    font-weight: 700 !important;
+    font-size: 13px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.8px !important;
+    margin-bottom: 12px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+}
+
+.web-ruler-section-title::before {
+    content: '' !important;
+    width: 3px !important;
+    height: 14px !important;
+    background: linear-gradient(135deg, #667eea, #764ba2) !important;
+    border-radius: 2px !important;
+}
+
+.web-ruler-info-row {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    margin-bottom: 8px !important;
+    font-size: 13px !important;
+    padding: 6px 0 !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.03) !important;
+    min-height: 24px !important;
+}
+
+.web-ruler-info-row:last-child {
+    margin-bottom: 0 !important;
+    border-bottom: none !important;
+}
+
+.web-ruler-info-row span {
+    color: #555 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    font-weight: 500 !important;
+    line-height: 1.4 !important;
+}
+
+.web-ruler-info-row span:first-child {
+    color: #777 !important;
+    font-weight: 400 !important;
+    font-size: 12px !important;
+    min-width: 60px !important;
+    flex-shrink: 0 !important;
+}
+
+.web-ruler-info-row span:last-child {
+    font-weight: 600 !important;
+    color: #333 !important;
+    text-align: right !important;
+    flex: 1 !important;
+    justify-content: flex-end !important;
+}
+
+.web-ruler-color-sample {
+    display: inline-block !important;
+    width: 18px !important;
+    height: 18px !important;
+    border-radius: 4px !important;
+    border: 2px solid rgba(255, 255, 255, 0.8) !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+    vertical-align: middle !important;
+    margin-left: 4px !important;
+}
+
+.web-ruler-measure-tip {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1)) !important;
+    color: #667eea !important;
+    padding: 12px 16px !important;
+    border-radius: 10px !important;
+    font-size: 12px !important;
+    text-align: center !important;
+    margin-top: 14px !important;
+    border: 1px solid rgba(102, 126, 234, 0.2) !important;
+    font-weight: 500 !important;
+    backdrop-filter: blur(10px) !important;
+    line-height: 1.5 !important;
+}
+
+/* 元素高亮样式 */
+.web-ruler-highlight {
+    outline: 2px solid #667eea !important;
+    outline-offset: -2px !important;
+    background-color: rgba(102, 126, 234, 0.1) !important;
+}
+
+/* 测量点样式 */
+.web-ruler-measure-point {
+    position: fixed !important;
+    width: 12px !important;
+    height: 12px !important;
+    background: #667eea !important;
+    border: 2px solid #fff !important;
+    border-radius: 50% !important;
+    z-index: 2147483646 !important;
+    pointer-events: none !important;
+    box-shadow: 0 0 8px rgba(102, 126, 234, 0.6) !important;
+    animation: web-ruler-point-pulse 1s infinite alternate !important;
+}
+
+@keyframes web-ruler-point-pulse {
+    from {
+        transform: scale(1) !important;
+        box-shadow: 0 0 8px rgba(102, 126, 234, 0.6) !important;
+    }
+    to {
+        transform: scale(1.2) !important;
+        box-shadow: 0 0 12px rgba(102, 126, 234, 0.8) !important;
+    }
+}
+
+/* 测量线样式 */
+.web-ruler-measure-line {
+    position: fixed !important;
+    height: 2px !important;
+    background: linear-gradient(90deg, #667eea, #764ba2) !important;
+    z-index: 2147483646 !important;
+    pointer-events: none !important;
+    box-shadow: 0 0 4px rgba(102, 126, 234, 0.5) !important;
+}
+
+.web-ruler-measure-line::before,
+.web-ruler-measure-line::after {
+    content: '' !important;
+    position: absolute !important;
+    width: 8px !important;
+    height: 8px !important;
+    background: #667eea !important;
+    border-radius: 50% !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    box-shadow: 0 0 4px rgba(102, 126, 234, 0.5) !important;
+}
+
+.web-ruler-measure-line::before {
+    left: -4px !important;
+}
+
+.web-ruler-measure-line::after {
+    right: -4px !important;
+}
+
+/* 测量提示样式 */
+.web-ruler-measure-tip-popup {
+    position: fixed !important;
+    top: 20px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    z-index: 2147483647 !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    color: #333 !important;
+    padding: 16px 24px !important;
+    border-radius: 12px !important;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+    backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.8) !important;
+    pointer-events: none !important;
+    animation: web-ruler-fade-in 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+
+.web-ruler-measure-tip-popup::before {
+    content: '📏' !important;
+    margin-right: 8px !important;
+    font-size: 16px !important;
+}
+
+@keyframes web-ruler-fade-in {
+    from {
+        opacity: 0 !important;
+        transform: translateX(-50%) translateY(-10px) scale(0.95) !important;
+    }
+    to {
+        opacity: 1 !important;
+        transform: translateX(-50%) translateY(0) scale(1) !important;
+    }
+}
+
+/* 激活状态下的光标样式 */
+.web-ruler-active.web-ruler-measure-mode {
+    cursor: crosshair !important;
+}
+
+/* 防止与网站样式冲突 */
+.web-ruler-panel * {
+    box-sizing: border-box !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .web-ruler-panel {
+        min-width: 280px !important;
+        max-width: 320px !important;
+        font-size: 12px !important;
+    }
+    
+    .web-ruler-panel-content {
+        padding: 12px !important;
+    }
+    
+    .web-ruler-section {
+        padding: 12px 14px !important;
+        margin-bottom: 12px !important;
+    }
+    
+    .web-ruler-section-title {
+        font-size: 12px !important;
+        margin-bottom: 10px !important;
+    }
+    
+    .web-ruler-info-row {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 4px !important;
+        padding: 8px 0 !important;
+        min-height: auto !important;
+    }
+    
+    .web-ruler-info-row span:first-child {
+        min-width: auto !important;
+        font-size: 11px !important;
+    }
+    
+    .web-ruler-info-row span:last-child {
+        text-align: left !important;
+        justify-content: flex-start !important;
+        font-size: 12px !important;
+    }
+    
+    .web-ruler-measure-tip-popup {
+        font-size: 13px !important;
+        padding: 12px 16px !important;
+        max-width: 280px !important;
+        word-wrap: break-word !important;
+    }
+    
+    .web-ruler-color-sample {
+        width: 16px !important;
+        height: 16px !important;
+    }
+}

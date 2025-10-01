@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>插件功能测试页面</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+        }
+        
+        .test-section {
+            margin-bottom: 40px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .test-title {
+            font-size: 1.5em;
+            color: #333;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .instructions {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .step {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .step-number {
+            background: #667eea;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        
+        .test-area {
+            background: white;
+            border: 2px dashed #ddd;
+            border-radius: 12px;
+            padding: 40px;
+            margin: 20px 0;
+            position: relative;
+        }
+        
+        .test-elements {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .test-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+        
+        .test-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .distance-demo {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 40px;
+            padding: 20px;
+            background: #f0f2f5;
+            border-radius: 8px;
+        }
+        
+        .point {
+            width: 60px;
+            height: 60px;
+            background: #ff6b6b;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            cursor: crosshair;
+            box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+        }
+        
+        .status {
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-weight: 500;
+        }
+        
+        .status.info {
+            background: #e3f2fd;
+            color: #1976d2;
+            border-left: 4px solid #2196f3;
+        }
+        
+        .status.success {
+            background: #e8f5e8;
+            color: #2e7d32;
+            border-left: 4px solid #4caf50;
+        }
+        
+        .status.warning {
+            background: #fff3e0;
+            color: #f57c00;
+            border-left: 4px solid #ff9800;
+        }
+        
+        .keyboard-hint {
+            background: #333;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 12px;
+        }
+        
+        .debug-info {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 12px;
+            margin-top: 20px;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid #667eea;
+        }
+        
+        .feature-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .feature-desc {
+            color: #666;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔧 网页隐形尺插件测试</h1>
+        
+        <!-- 基础功能测试 -->
+        <div class="test-section">
+            <div class="test-title">
+                <span>🔍</span>
+                基础功能测试
+            </div>
+            
+            <div class="instructions">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div>确保已安装并启用网页隐形尺插件</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div>点击插件图标，开启"启用插件"开关</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div>鼠标悬停在下方元素上，应该看到元素信息提示</div>
+                </div>
+            </div>
+            
+            <div class="test-area">
+                <div class="test-elements">
+                    <div class="test-box" id="box1">悬停测试元素 A</div>
+                    <div class="test-box" id="box2">悬停测试元素 B</div>
+                    <div class="test-box" id="box3">悬停测试元素 C</div>
+                    <div class="test-box" id="box4">悬停测试元素 D</div>
+                </div>
+            </div>
+            
+            <div class="status info">
+                💡 如果悬停时看到元素信息（尺寸、位置等），说明基础功能正常
+            </div>
+        </div>
+        
+        <!-- 距离测量功能测试 -->
+        <div class="test-section">
+            <div class="test-title">
+                <span>📐</span>
+                距离测量功能测试
+            </div>
+            
+            <div class="instructions">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div>在插件面板中开启"距离测量"开关</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div>按住 <span class="keyboard-hint">Ctrl</span> 键并点击下方红色圆点A</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div>点击红色圆点B完成测量</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div>按 <span class="keyboard-hint">ESC</span> 键退出测量模式</div>
+                </div>
+            </div>
+            
+            <div class="test-area">
+                <div class="distance-demo">
+                    <div class="point" id="pointA">A</div>
+                    <div style="text-align: center; color: #666; font-style: italic;">
+                        ← 测量这两个点之间的距离 →
+                    </div>
+                    <div class="point" id="pointB">B</div>
+                </div>
+            </div>
+            
+            <div class="status success">
+                ✅ 成功测量时会显示连线和距离数值
+            </div>
+            <div class="status warning">
+                ⚠️ 如果无法测量，请检查是否已开启两个开关
+            </div>
+        </div>
+        
+        <!-- 功能特点说明 -->
+        <div class="test-section">
+            <div class="test-title">
+                <span>✨</span>
+                功能特点
+            </div>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-title">🎯 精确测量</div>
+                    <div class="feature-desc">像素级精度的距离计算，适用于精确的设计和开发需求</div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-title">👁️ 可视化标记</div>
+                    <div class="feature-desc">清晰的测量点标记和连线显示，直观展示测量结果</div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-title">⚡ 快速操作</div>
+                    <div class="feature-desc">简单的Ctrl+点击操作，ESC键快速退出测量模式</div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-title">🔄 自动清理</div>
+                    <div class="feature-desc">测量完成后自动清理界面元素，保持页面整洁</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="debug-info">
+            <div>🔧 调试信息：</div>
+            <div>• 打开浏览器开发者工具查看Console输出</div>
+            <div>• 检查插件状态和事件响应</div>
+            <div>• 确认消息通信是否正常</div>
+        </div>
+    </div>
+    
+    <script>
+        console.log('🔧 插件测试页面已加载');
+        console.log('💡 请按照页面说明进行功能测试');
+        
+        // 添加测试辅助功能
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'F1') {
+                e.preventDefault();
+                alert('测试提示：\n1. 确保插件已安装并启用\n2. 开启插件和测量功能开关\n3. 使用 Ctrl+点击 开始测量\n4. 观察测量线和距离显示\n5. 使用 ESC 退出测量模式');
+            }
+        });
+        
+        // 添加点击反馈
+        document.addEventListener('click', function(e) {
+            if (e.ctrlKey || e.metaKey) {
+                console.log('🎯 检测到 Ctrl+点击，坐标:', { x: e.clientX, y: e.clientY });
+            }
+        });
+        
+        // 添加鼠标悬停反馈
+        document.addEventListener('mouseover', function(e) {
+            if (e.target.classList.contains('test-box') || e.target.classList.contains('point')) {
+                console.log('🖱️ 鼠标悬停在测试元素上:', e.target.id || e.target.className);
+            }
+        });
+        
+        console.log('📝 按 F1 键查看测试提示');
+        console.log('🎯 测试页面功能已就绪');
+    </script>
+</body>
+</html>

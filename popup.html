@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>网页隐形尺</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 顶部标题区域 -->
+        <div class="header">
+            <div class="logo">
+                <div class="logo-icon">📏</div>
+                <div class="title-section">
+                    <h1>网页隐形尺</h1>
+                    <div class="subtitle">Web Ruler Extension</div>
+                </div>
+            </div>
+            <div class="version-badge">v1.0.0</div>
+        </div>
+        
+        <!-- 功能控制区域 -->
+        <div class="controls-section">
+            <div class="section-title">
+                <span class="icon">⚙️</span>
+                功能控制
+            </div>
+            
+            <div class="control-grid">
+                <div class="control-card">
+                    <div class="control-header">
+                        <div class="control-icon">🔍</div>
+                        <div class="control-info">
+                            <div class="control-name">启用插件</div>
+                            <div class="control-desc">显示元素信息</div>
+                        </div>
+                    </div>
+                    <label class="modern-switch">
+                        <input type="checkbox" id="enablePlugin">
+                        <span class="switch-slider"></span>
+                    </label>
+                </div>
+                
+                <div class="control-card">
+                    <div class="control-header">
+                        <div class="control-icon">📐</div>
+                        <div class="control-info">
+                            <div class="control-name">距离测量</div>
+                            <div class="control-desc">测量两点距离</div>
+                        </div>
+                    </div>
+                    <label class="modern-switch">
+                        <input type="checkbox" id="enableMeasure">
+                        <span class="switch-slider"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 快速操作区域 -->
+        <div class="quick-actions">
+            <div class="section-title">
+                <span class="icon">⚡</span>
+                快速操作
+            </div>
+            
+            <div class="action-buttons">
+                <button class="action-btn primary" id="refreshPage">
+                    <span class="btn-icon">🔄</span>
+                    <span class="btn-text">刷新页面</span>
+                </button>
+                
+                <button class="action-btn secondary" id="toggleGuide">
+                    <span class="btn-icon">📖</span>
+                    <span class="btn-text">使用指南</span>
+                </button>
+            </div>
+        </div>
+        
+        <!-- 使用指南区域（可折叠） -->
+        <div class="guide-section" id="guideSection">
+            <div class="guide-content">
+                <!-- 快速开始 -->
+                <div class="guide-card">
+                    <div class="guide-header">
+                        <span class="guide-icon">🚀</span>
+                        <h4>快速开始</h4>
+                    </div>
+                    <div class="step-list">
+                        <div class="step-item">
+                            <span class="step-number">1</span>
+                            <span class="step-text">开启"启用插件"开关</span>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">2</span>
+                            <span class="step-text">鼠标悬停查看元素信息</span>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">3</span>
+                            <span class="step-text">开启"距离测量"进行测量</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 距离测量 -->
+                <div class="guide-card">
+                    <div class="guide-header">
+                        <span class="guide-icon">📐</span>
+                        <h4>距离测量</h4>
+                    </div>
+                    <div class="measure-guide">
+                        <div class="measure-step">
+                            <div class="measure-key">
+                                <kbd>Ctrl</kbd> + <span class="click-icon">🖱️</span>
+                            </div>
+                            <div class="measure-desc">点击第一个点开始测量</div>
+                        </div>
+                        <div class="measure-step">
+                            <div class="measure-key">
+                                <kbd>Ctrl</kbd> + <span class="click-icon">🖱️</span>
+                            </div>
+                            <div class="measure-desc">点击第二个点完成测量</div>
+                        </div>
+                        <div class="measure-step">
+                            <div class="measure-key">
+                                <kbd>ESC</kbd>
+                            </div>
+                            <div class="measure-desc">退出测量模式</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 功能特点 -->
+                <div class="guide-card">
+                    <div class="guide-header">
+                        <span class="guide-icon">✨</span>
+                        <h4>功能特点</h4>
+                    </div>
+                    <div class="feature-grid">
+                        <div class="feature-item">
+                            <span class="feature-icon">🎯</span>
+                            <span class="feature-text">精确测量</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">👁️</span>
+                            <span class="feature-text">可视化标记</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">⚡</span>
+                            <span class="feature-text">快速操作</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">🔄</span>
+                            <span class="feature-text">自动退出</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 底部信息 -->
+        <div class="footer">
+            <div class="footer-info">
+                <span class="status-indicator" id="statusIndicator">
+                    <span class="status-dot"></span>
+                    <span class="status-text">就绪</span>
+                </span>
+            </div>
+        </div>
+    </div>
+    
+    <script src="popup.js"></script>
+</body>
+</html>
