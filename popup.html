@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>网页隐形尺</title>
+    <title data-i18n="title_main">网页隐形尺</title>
     <link rel="stylesheet" href="popup.css">
 </head>
 <body>
@@ -13,8 +13,8 @@
             <div class="logo">
                 <div class="logo-icon">📏</div>
                 <div class="title-section">
-                    <h1>网页隐形尺</h1>
-                    <div class="subtitle">Web Ruler Extension</div>
+                    <h1 data-i18n="title_main">网页隐形尺</h1>
+                    <div class="subtitle" data-i18n="subtitle">Web Ruler Extension</div>
                 </div>
             </div>
             <div class="version-badge">v1.0.0</div>
@@ -24,7 +24,7 @@
         <div class="controls-section">
             <div class="section-title">
                 <span class="icon">⚙️</span>
-                功能控制
+                <span data-i18n="section_controls">功能控制</span>
             </div>
             
             <div class="control-grid">
@@ -32,8 +32,8 @@
                     <div class="control-header">
                         <div class="control-icon">🔍</div>
                         <div class="control-info">
-                            <div class="control-name">启用插件</div>
-                            <div class="control-desc">显示元素信息</div>
+                            <div class="control-name" data-i18n="enable_plugin_label">启用插件</div>
+                            <div class="control-desc" data-i18n="enable_plugin_desc">显示元素信息</div>
                         </div>
                     </div>
                     <label class="modern-switch">
@@ -46,8 +46,8 @@
                     <div class="control-header">
                         <div class="control-icon">📐</div>
                         <div class="control-info">
-                            <div class="control-name">距离测量</div>
-                            <div class="control-desc">测量两点距离</div>
+                            <div class="control-name" data-i18n="enable_measure_label">距离测量</div>
+                            <div class="control-desc" data-i18n="enable_measure_desc">测量两点距离</div>
                         </div>
                     </div>
                     <label class="modern-switch">
@@ -62,18 +62,18 @@
         <div class="quick-actions">
             <div class="section-title">
                 <span class="icon">⚡</span>
-                快速操作
+                <span data-i18n="quick_actions_title">快速操作</span>
             </div>
             
             <div class="action-buttons">
                 <button class="action-btn primary" id="refreshPage">
                     <span class="btn-icon">🔄</span>
-                    <span class="btn-text">刷新页面</span>
+                    <span class="btn-text" id="refreshPageText" data-i18n="refresh_page_btn">刷新页面</span>
                 </button>
                 
                 <button class="action-btn secondary" id="toggleGuide">
                     <span class="btn-icon">📖</span>
-                    <span class="btn-text">使用指南</span>
+                    <span class="btn-text" id="guideBtnText" data-i18n="guide_expand">使用指南</span>
                 </button>
             </div>
         </div>
@@ -85,20 +85,20 @@
                 <div class="guide-card">
                     <div class="guide-header">
                         <span class="guide-icon">🚀</span>
-                        <h4>快速开始</h4>
+                        <h4 data-i18n="guide_quick_start_title">快速开始</h4>
                     </div>
                     <div class="step-list">
                         <div class="step-item">
                             <span class="step-number">1</span>
-                            <span class="step-text">开启"启用插件"开关</span>
+                            <span class="step-text" data-i18n="guide_step1">开启"启用插件"开关</span>
                         </div>
                         <div class="step-item">
                             <span class="step-number">2</span>
-                            <span class="step-text">鼠标悬停查看元素信息</span>
+                            <span class="step-text" data-i18n="guide_step2">鼠标悬停查看元素信息</span>
                         </div>
                         <div class="step-item">
                             <span class="step-number">3</span>
-                            <span class="step-text">开启"距离测量"进行测量</span>
+                            <span class="step-text" data-i18n="guide_step3">开启"距离测量"进行测量</span>
                         </div>
                     </div>
                 </div>
@@ -107,26 +107,26 @@
                 <div class="guide-card">
                     <div class="guide-header">
                         <span class="guide-icon">📐</span>
-                        <h4>距离测量</h4>
+                        <h4 data-i18n="guide_measure_title">距离测量</h4>
                     </div>
                     <div class="measure-guide">
                         <div class="measure-step">
                             <div class="measure-key">
                                 <kbd>Ctrl</kbd> + <span class="click-icon">🖱️</span>
                             </div>
-                            <div class="measure-desc">点击第一个点开始测量</div>
+                            <div class="measure-desc" data-i18n="measure_step1">点击第一个点开始测量</div>
                         </div>
                         <div class="measure-step">
                             <div class="measure-key">
                                 <kbd>Ctrl</kbd> + <span class="click-icon">🖱️</span>
                             </div>
-                            <div class="measure-desc">点击第二个点完成测量</div>
+                            <div class="measure-desc" data-i18n="measure_step2">点击第二个点完成测量</div>
                         </div>
                         <div class="measure-step">
                             <div class="measure-key">
                                 <kbd>ESC</kbd>
                             </div>
-                            <div class="measure-desc">退出测量模式</div>
+                            <div class="measure-desc" data-i18n="measure_step3">退出测量模式</div>
                         </div>
                     </div>
                 </div>
@@ -135,24 +135,24 @@
                 <div class="guide-card">
                     <div class="guide-header">
                         <span class="guide-icon">✨</span>
-                        <h4>功能特点</h4>
+                        <h4 data-i18n="feature_title">功能特点</h4>
                     </div>
                     <div class="feature-grid">
                         <div class="feature-item">
                             <span class="feature-icon">🎯</span>
-                            <span class="feature-text">精确测量</span>
+                            <span class="feature-text" data-i18n="feature_precise">精确测量</span>
                         </div>
                         <div class="feature-item">
                             <span class="feature-icon">👁️</span>
-                            <span class="feature-text">可视化标记</span>
+                            <span class="feature-text" data-i18n="feature_visual">可视化标记</span>
                         </div>
                         <div class="feature-item">
                             <span class="feature-icon">⚡</span>
-                            <span class="feature-text">快速操作</span>
+                            <span class="feature-text" data-i18n="feature_quick">快速操作</span>
                         </div>
                         <div class="feature-item">
                             <span class="feature-icon">🔄</span>
-                            <span class="feature-text">自动退出</span>
+                            <span class="feature-text" data-i18n="feature_auto">自动退出</span>
                         </div>
                     </div>
                 </div>
@@ -164,7 +164,7 @@
             <div class="footer-info">
                 <span class="status-indicator" id="statusIndicator">
                     <span class="status-dot"></span>
-                    <span class="status-text">就绪</span>
+                    <span class="status-text" data-i18n="status_ready">就绪</span>
                 </span>
             </div>
         </div>

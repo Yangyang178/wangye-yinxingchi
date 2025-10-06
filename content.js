@@ -8,6 +8,17 @@ let measureMode = false;
 let measurePoints = [];
 let measureLine = null;
 
+// 本地化支持函数：优先 chrome.i18n，其次回退到提供的默认值
+function t(key, fallback) {
+    try {
+        if (typeof chrome !== 'undefined' && chrome.i18n && chrome.i18n.getMessage) {
+            const msg = chrome.i18n.getMessage(key);
+            if (msg) return msg;
+        }
+    } catch (e) {}
+    return fallback || key;
+}
+
 // 初始化插件
 function initPlugin() {
     console.log('Initializing Web Ruler Plugin...');
@@ -99,7 +110,7 @@ function handleClick(e) {
     if (e.ctrlKey || e.metaKey) {
         e.preventDefault();
         if (!isMeasureEnabled) {
-            showMeasureTip('请先在插件面板中开启距离测量功能', 2000);
+            showMeasureTip(t('tip_enable_measure_first','请先在插件面板中开启距离测量功能'), 2000);
             return;
         }
         
@@ -213,48 +224,48 @@ function updateInfoPanel(info) {
         </div>
         <div class="web-ruler-panel-content">
             <div class="web-ruler-section">
-                <div class="web-ruler-section-title">尺寸</div>
+                <div class="web-ruler-section-title">${t('size_title','尺寸')}</div>
                 <div class="web-ruler-info-row">
-                    <span>宽度: ${info.width}px</span>
-                    <span>高度: ${info.height}px</span>
+                    <span>${t('width_label','宽度')}: ${info.width}px</span>
+                    <span>${t('height_label','高度')}: ${info.height}px</span>
                 </div>
                 <div class="web-ruler-info-row">
-                    <span>位置: ${info.left}, ${info.top}</span>
-                </div>
-            </div>
-            
-            <div class="web-ruler-section">
-                <div class="web-ruler-section-title">颜色</div>
-                <div class="web-ruler-info-row">
-                    <span>背景: <span class="web-ruler-color-sample" style="background-color: ${info.backgroundColor}"></span> ${formatColor(info.backgroundColor)}</span>
-                </div>
-                <div class="web-ruler-info-row">
-                    <span>文字: <span class="web-ruler-color-sample" style="background-color: ${info.color}"></span> ${formatColor(info.color)}</span>
+                    <span>${t('position_label','位置')}: ${info.left}, ${info.top}</span>
                 </div>
             </div>
             
             <div class="web-ruler-section">
-                <div class="web-ruler-section-title">字体</div>
+                <div class="web-ruler-section-title">${t('colors_title','颜色')}</div>
                 <div class="web-ruler-info-row">
-                    <span>大小: ${info.fontSize}</span>
-                    <span>粗细: ${info.fontWeight}</span>
+                    <span>${t('background_label','背景')}: <span class="web-ruler-color-sample" style="background-color: ${info.backgroundColor}"></span> ${formatColor(info.backgroundColor)}</span>
                 </div>
                 <div class="web-ruler-info-row">
-                    <span>字体: ${info.fontFamily.split(',')[0].replace(/['"]/g, '')}</span>
+                    <span>${t('text_color_label','文字')}: <span class="web-ruler-color-sample" style="background-color: ${info.color}"></span> ${formatColor(info.color)}</span>
                 </div>
             </div>
             
             <div class="web-ruler-section">
-                <div class="web-ruler-section-title">间距</div>
+                <div class="web-ruler-section-title">${t('font_title','字体')}</div>
                 <div class="web-ruler-info-row">
-                    <span>外边距: ${info.margin.top} ${info.margin.right} ${info.margin.bottom} ${info.margin.left}</span>
+                    <span>${t('font_size_label','大小')}: ${info.fontSize}</span>
+                    <span>${t('font_weight_label','粗细')}: ${info.fontWeight}</span>
                 </div>
                 <div class="web-ruler-info-row">
-                    <span>内边距: ${info.padding.top} ${info.padding.right} ${info.padding.bottom} ${info.padding.left}</span>
+                    <span>${t('font_family_label','字体')}: ${info.fontFamily.split(',')[0].replace(/['\"]/g, '')}</span>
+                </div>
+            </div>
+            
+            <div class="web-ruler-section">
+                <div class="web-ruler-section-title">${t('spacing_title','间距')}</div>
+                <div class="web-ruler-info-row">
+                    <span>${t('margin_label','外边距')}: ${info.margin.top} ${info.margin.right} ${info.margin.bottom} ${info.margin.left}</span>
+                </div>
+                <div class="web-ruler-info-row">
+                    <span>${t('padding_label','内边距')}: ${info.padding.top} ${info.padding.right} ${info.padding.bottom} ${info.padding.left}</span>
                 </div>
             </div>
         </div>
-        ${isMeasureEnabled ? '<div class="web-ruler-measure-tip">Ctrl+点击开启测量模式</div>' : ''}
+        ${isMeasureEnabled ? '<div class="web-ruler-measure-tip">' + t('panel_measure_hint','Ctrl+点击开启测量模式') + '</div>' : ''}
     `;
 }
 
@@ -322,7 +333,7 @@ function enterMeasureMode() {
     hideElementInfo();
     
     // 显示测量提示
-    showMeasureTip('点击两个点进行测量，ESC退出');
+    showMeasureTip(t('tip_enter_measure_mode','点击两个点进行测量，ESC退出'));
 }
 
 // 退出测量模式
@@ -359,7 +370,7 @@ function addMeasurePoint(x, y) {
     measurePoints.push({ x, y });
     
     if (measurePoints.length === 1) {
-        showMeasureTip('点击第二个点完成测量', 0);
+        showMeasureTip(t('tip_second_point','点击第二个点完成测量'), 0);
         // 在第一个点显示一个小圆点
         createMeasurePoint(x, y, 1);
     } else if (measurePoints.length === 2) {
@@ -398,7 +409,7 @@ function createMeasurePoint(x, y, pointNumber) {
         font-family: Arial, sans-serif;
         white-space: nowrap;
     `;
-    pointLabel.textContent = `点${pointNumber}`;
+    pointLabel.textContent = `${t('point_label_prefix','点')}${pointNumber}`;
     point.appendChild(pointLabel);
     
     document.body.appendChild(point);
@@ -453,7 +464,7 @@ function calculateDistance() {
             Math.pow(point2.x - point1.x, 2) + Math.pow(point2.y - point1.y, 2)
         );
         
-        const distanceText = `距离: ${Math.round(distance)}px`;
+        const distanceText = `${t('distance_label','距离')}: ${Math.round(distance)}px`;
         console.log('Distance calculated:', distanceText);
         
         // 在测量线中点显示距离
